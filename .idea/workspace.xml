@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c22c74e1-1d57-4303-9ce1-1f5255d05b3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Mini_Test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/QLSinhVien.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/SortByDiemTbGiam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/SortByDiemTbTang.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/students.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/ReaderAndWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/SinhVien.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Validate/ValidateStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/QLSinhVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/QLSinhVien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/students.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/students.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/ReaderAndWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/ReaderAndWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/SinhVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/SinhVien.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +40,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/CodeGym/Hoc-lieu-Java/DemoCode/Modul-2/ThucHanh-QLHVcodegym2/src/models/Student.java"
+    "last_opened_file_path": "C:/CodeGym/Hoc-lieu-Java/DemoCode/Modul-2/Mini_Test",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RunManager">
@@ -80,7 +73,9 @@
       <option name="presentableId" value="Default" />
       <updated>1654006210731</updated>
       <workItem from="1654006212748" duration="10202000" />
-      <workItem from="1654044963764" duration="6411000" />
+      <workItem from="1654044963764" duration="12205000" />
+      <workItem from="1654120303322" duration="3791000" />
+      <workItem from="1654130936205" duration="1079000" />
     </task>
     <servers />
   </component>

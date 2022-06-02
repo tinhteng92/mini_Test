@@ -3,7 +3,7 @@ package models;
 import java.text.SimpleDateFormat;
 
 public class SinhVien {
-    private String MSV;
+    private int MSV;
     private String hoTen;
     private int tuoi;
     private String gioiTinh;
@@ -14,7 +14,7 @@ public class SinhVien {
     }
 
 
-    public SinhVien(String MSV, String hoTen, int tuoi, String gioiTinh, String diaChi, float diemTB) {
+    public SinhVien(int MSV, String hoTen, int tuoi, String gioiTinh, String diaChi, float diemTB) {
         this.MSV = MSV;
         this.hoTen = hoTen;
         this.tuoi = tuoi;
@@ -23,11 +23,11 @@ public class SinhVien {
         this.diemTB = diemTB;
     }
 
-    public String getMSV() {
+    public int getMSV() {
         return MSV;
     }
 
-    public void setMSV(String MSV) {
+    public void setMSV(int MSV) {
         this.MSV = MSV;
     }
 

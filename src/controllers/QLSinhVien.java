@@ -1,5 +1,6 @@
 package controllers;
 
+import Validate.ValidateStudent;
 import io.ReaderAndWriter;
 import models.SinhVien;
 
@@ -9,14 +10,13 @@ import java.util.Scanner;
 
 public class QLSinhVien {
     Scanner scanner = new Scanner(System.in);
-    ReaderAndWriter readerAndWriter = new ReaderAndWriter();
     List<SinhVien> sinhVienList = new ArrayList<SinhVien>();
-    String[] gioiTinh = new String[2];
+    ValidateStudent validateStudent = new ValidateStudent();
+    ReaderAndWriter readerAndWriterStudent = new ReaderAndWriter();
+
 
 
     public QLSinhVien() {
-        gioiTinh[0] = "Nũ";
-        gioiTinh[1] = "Nam";
     }
 
 
@@ -50,58 +50,40 @@ public class QLSinhVien {
             case 5:
                 sapXep();
                 break;
-//            case 6:
-//                doc();
-//            case 7:
-//                ghi();
+            case 6:
+                sinhVienList = readerAndWriterStudent.read();
+                System.out.println("Đọc thành công");
+                break;
+            case 7:
+                readerAndWriterStudent.write(sinhVienList);
+                System.out.println("Viết thành công");
+                break;
             case 8:
                 System.exit(0);
         }
     }
 
     public void hienThiDS(){
-        System.out.println("Danh sách sinh viên: ");
-        for(SinhVien sinhVien: sinhVienList){
-            System.out.println(sinhVien);
+        if(sinhVienList.size() == 0){
+            System.out.println("Chưa có danh sách nào!");
+        }
+        for (int i = 0; i < sinhVienList.size(); i++) {
+            if((i+1) % 5 == 0){
+                System.out.println(sinhVienList.get(i));
+                scanner.nextLine();
+            }else {
+                System.out.println(sinhVienList.get(i));
+            }
         }
     }
     public SinhVien taoSinhVien(){
-        boolean checkTuoi = false;
-        boolean checkDiemTB = false;
-        System.out.println("Nhập mã sinh viên:");
-        String MSV = scanner.nextLine();
-        System.out.println("Nhập tên sinh viên:");
-        String hoTen = scanner.nextLine();
-        int tuoi = -1;
-        while (!checkTuoi) {
-            try {
-                System.out.println("Nhập tuổi:");
-                tuoi = Integer.parseInt(scanner.nextLine());
-                checkTuoi = true;
-            } catch (Exception e) {
-                System.err.println("Hãy nhập số!");
-            }
-        }
-        System.out.println("Chọn giới tính của sinh viên:");
-        for (int i = 0; i < gioiTinh.length; i++) {
-            System.out.println("      " + i +". " + gioiTinh[i]);
-        }
-        System.out.println("Nếu là Nữ chọn 0, nếu là Nam chọn 1");
-        int choice1 = Integer.parseInt(scanner.nextLine());
-
-        System.out.println("Nhập địa chỉ:");
-        String diaChi = scanner.nextLine();
-        float diemTB = -1;
-        while (!checkDiemTB) {
-            try {
-                System.out.println("Nhập điểm trung bình:");
-                diemTB = Float.parseFloat(scanner.nextLine());
-                checkDiemTB = true;
-            } catch (Exception e) {
-                System.err.println("Hãy nhập số!");
-            }
-        }
-        return new SinhVien(MSV, hoTen, tuoi, gioiTinh[choice1], diaChi, diemTB);
+        int msv = validateStudent.validateID(sinhVienList);
+        String hoTen= validateStudent.validateString("họ tên sinh viên: ");
+        int tuoi = validateStudent.validateTuoi();
+        String gioiTinh = validateStudent.validateGioiTinh();
+        String diaChi = validateStudent.validateString("địa chỉ của sinh viên:");
+        float diemTB = validateStudent.validateDiemTB();
+        return new SinhVien(msv, hoTen,tuoi, gioiTinh, diaChi, diemTB);
     }
     public void themSV() {
         sinhVienList.add(taoSinhVien());
@@ -109,36 +91,24 @@ public class QLSinhVien {
 
     public void capNhat() {
         System.out.println("Nhập mã sinh viên cần sửa:");
-        String msv = scanner.nextLine();
-        for (int i = 0; i < sinhVienList.size(); i++) {
-            if(sinhVienList.get(i).getMSV().equals(msv)) {
-                sinhVienList.remove(i);
-                themSV();
-                break;
-            } else if (i == sinhVienList.size() - 1){
-                System.out.println("Không tìm được sinh viên với mã sinh viên trên.");
-                capNhat();
-                break;
-            } else if (msv.equals("")) {
-                break;
-            }
+        int msv = Integer.parseInt(scanner.nextLine());
+        int index = validateStudent.getIndexMSV(msv, sinhVienList);
+        if(index != -1){
+            sinhVienList.set(index, taoSinhVien());
+        }else {
+            System.out.println("Mã sinh viên không tồn tại!");
         }
     }
 
-    public SinhVien xoaSV(){
+    public void xoaSV(){
         System.out.println("Nhập mã số sinh viên của sv muốn xóa: ");
-        String msv = scanner.nextLine();
-        SinhVien sinhVien = null;
-        for (SinhVien sv: sinhVienList) {
-            if (sv.getMSV().equals(msv)) {
-                sinhVien = sv;
-            }
+        int msv = Integer.parseInt(scanner.nextLine());
+        int index = validateStudent.getIndexMSV(msv, sinhVienList);
+        if(index != -1){
+            sinhVienList.remove(index);
+        }else {
+            System.out.println("Sinh viên này ko tồn tại!");
         }
-        if(sinhVien != null){
-            sinhVienList.remove(sinhVien);
-            System.out.println("Xóa sinh viên có mã số" + msv + "thành công");
-        }
-        return sinhVien;
     }
 
     public void sapXep(){
@@ -164,7 +134,5 @@ public class QLSinhVien {
                 break;
 
         }
-
-
     }
 }
